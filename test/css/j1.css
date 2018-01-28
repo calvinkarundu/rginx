@@ -1,0 +1,548 @@
+	border: 1px solid #bb7070;  /* Dark pink */
+	background: #ffdbdb;        /* Pink */
+}
+table.fmbox-editnotice {
+	background: transparent;
+}
+/* Div based "warning" style fmbox messages. */
+div.mw-warning-with-logexcerpt,
+div.mw-lag-warn-high,
+div.mw-cascadeprotectedwarning,
+div#mw-protect-cascadeon,
+div.titleblacklist-warning,
+div.locked-warning {
+	clear: both;
+	margin: 0.2em 0;
+	border: 1px solid #bb7070;
+	background: #ffdbdb;
+	padding: 0.25em 0.9em;
+}
+/* Div based "system" style fmbox messages.
+   Used in [[MediaWiki:Readonly lag]]. */
+div.mw-lag-warn-normal,
+div.fmbox-system {
+	clear: both;
+	margin: 0.2em 0;
+	border: 1px solid #a2a9b1;
+	background: #f8f9fa;
+	padding: 0.25em 0.9em;
+}
+
+/* These mbox-small classes must be placed after all other
+   ambox/tmbox/ombox etc classes. "html body.mediawiki" is so
+   they override "table.ambox + table.ambox" above. */
+html body.mediawiki .mbox-small {   /* For the "small=yes" option. */
+	/* @noflip */
+	clear: right;
+	/* @noflip */
+	float: right;
+	/* @noflip */
+	margin: 4px 0 4px 1em;
+	box-sizing: border-box;
+	width: 238px;
+	font-size: 88%;
+	line-height: 1.25em;
+}
+html body.mediawiki .mbox-small-left {   /* For the "small=left" option. */
+	/* @noflip */
+	margin: 4px 1em 4px 0;
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 238px;
+	border-collapse: collapse;
+	font-size: 88%;
+	line-height: 1.25em;
+}
+
+/* Style for compact ambox */
+/* Hide the images */
+.compact-ambox table .mbox-image,
+.compact-ambox table .mbox-imageright,
+.compact-ambox table .mbox-empty-cell {
+	display: none;
+}
+/* Remove borders, backgrounds, padding, etc. */
+.compact-ambox table.ambox {
+	border: none;
+	border-collapse: collapse;
+	background: transparent;
+	margin: 0 0 0 1.6em !important;
+	padding: 0 !important;
+	width: auto;
+	display: block;
+}
+body.mediawiki .compact-ambox table.mbox-small-left {
+	font-size: 100%;
+	width: auto;
+	margin: 0;
+}
+/* Style the text cell as a list item and remove its padding */
+.compact-ambox table .mbox-text {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.compact-ambox table .mbox-text-span {
+	display: list-item;
+	line-height: 1.5em;
+	list-style-type: square;
+	list-style-image: url(/w/skins/MonoBook/bullet.gif);
+}
+.skin-vector .compact-ambox table .mbox-text-span {
+	list-style-type: disc;
+	list-style-image: url(/w/skins/Vector/images/bullet-icon.svg);
+	list-style-image: url(/w/skins/Vector/images/bullet-icon.png)\9;
+}
+/* Allow for hiding text in compact form */
+.compact-ambox .hide-when-compact {
+	display: none;
+}
+
+/* Remove default styles for [[MediaWiki:Noarticletext]]. */
+div.noarticletext {
+	border: none;
+	background: transparent;
+	padding: 0;
+}
+
+/* Hide (formatting) elements from screen, but not from screenreaders */
+.visualhide {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Bold save button */
+#wpSave {
+	font-weight: bold;
+}
+
+/* suppress missing interwiki image links where #ifexist cannot
+   be used due to high number of requests see .hidden-redlink on
+   [[m:MediaWiki:Common.css]] */
+.check-icon a.new {
+	display: none;
+	speak: none;
+}
+
+/* Removes underlines from certain links */
+.nounderlines a,
+.IPA a:link, .IPA a:visited {
+	text-decoration: none !important;
+}
+
+/* Standard Navigationsleisten, aka box hiding thingy
+   from .de.  Documentation at [[Wikipedia:NavFrame]]. */
+div.NavFrame {
+	margin: 0;
+	padding: 4px;
+	border: 1px solid #a2a9b1;
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 95%;
+}
+div.NavFrame + div.NavFrame {
+	border-top-style: none;
+	border-top-style: hidden;
+}
+div.NavPic {
+	background-color: #fff;
+	margin: 0;
+	padding: 2px;
+	/* @noflip */
+	float: left;
+}
+div.NavFrame div.NavHead {
+	line-height: 1.6em;
+	font-weight: bold;
+	background-color: #ccf;
+	position: relative;
+}
+div.NavFrame p,
+div.NavFrame div.NavContent,
+div.NavFrame div.NavContent p {
+	font-size: 100%;
+}
+div.NavEnd {
+	margin: 0;
+	padding: 0;
+	line-height: 1px;
+	clear: both;
+}
+a.NavToggle {
+	position: absolute;
+	top: 0;
+	/* @noflip */
+	right: 3px;
+	font-weight: normal;
+	font-size: 90%;
+}
+
+/* Hatnotes and disambiguation notices */
+.hatnote {
+	font-style: italic;
+}
+.hatnote i {
+	font-style: normal;
+}
+div.hatnote {
+	/* @noflip */
+	padding-left: 1.6em;
+	margin-bottom: 0.5em;
+}
+div.hatnote + div.hatnote {
+	margin-top: -0.5em;
+}
+
+/* Allow transcluded pages to display in lists rather than a table. */
+.listify td    { display: list-item; }
+.listify tr    { display: block; }
+.listify table { display: block; }
+
+/* Geographical coordinates defaults. See [[Template:Coord/link]]
+   for how these are used. The classes "geo", "longitude", and
+   "latitude" are used by the [[Geo microformat]]. */
+.geo-default, .geo-dms, .geo-dec  { display: inline; }
+.geo-nondefault, .geo-multi-punct { display: none; }
+.longitude, .latitude             { white-space: nowrap; }
+
+/* Temporary(!) fix for horizontal TOC in Blink (Chrone/Opera) */
+.hlist .tocnumber,
+.hlist .toctext {
+	display: inline;
+}
+/* When <div class="nonumtoc"> is used on the table of contents,
+   the ToC will display without numbers */
+.nonumtoc .tocnumber {
+	display: none;
+}
+.nonumtoc #toc ul,
+.nonumtoc .toc ul {
+	line-height: 1.5em;
+	list-style: none none;
+	margin: .3em 0 0;
+	padding: 0;
+}
+.hlist.nonumtoc #toc ul ul,
+.hlist.nonumtoc .toc ul ul {
+	/* @noflip */
+	margin: 0;
+}
+
+/* Allow limiting of which header levels are shown in a TOC;
+   <div class="toclimit-3">, for instance, will limit to
+   showing ==headings== and ===headings=== but no further
+   (as long as there are no =headings= on the page, which
+   there shouldn't be according to the MoS). */
+.toclimit-2 .toclevel-1 ul,
+.toclimit-3 .toclevel-2 ul,
+.toclimit-4 .toclevel-3 ul,
+.toclimit-5 .toclevel-4 ul,
+.toclimit-6 .toclevel-5 ul,
+.toclimit-7 .toclevel-6 ul {
+	display: none;
+}
+
+/* Styling for Template:Quote */
+blockquote.templatequote div.templatequotecite {
+	line-height: 1.5em;
+	/* @noflip */
+	text-align: left;
+	/* @noflip */
+	padding-left: 1.6em;
+	margin-top: 0;
+}
+
+/* User block messages */
+div.user-block {
+	padding: 5px;
+	margin-bottom: 0.5em;
+	border: 1px solid #A9A9A9;
+	background-color: #FFEFD5;
+}
+
+/* Prevent line breaks in silly places:
+   1) Where desired
+   2) Links when we don't want them to
+   3) Bold "links" to the page itself */
+.nowrap,
+.nowraplinks a,
+.nowraplinks .selflink {
+	white-space: nowrap;
+}
+.nowrap pre {
+	white-space: pre;
+}
+/* But allow wrapping where desired: */
+.wrap,
+.wraplinks a {
+	white-space: normal;
+}
+
+/* For template documentation */
+.template-documentation {
+	clear: both;
+	margin: 1em 0 0 0;
+	border: 1px solid #a2a9b1;
+	background-color: #ecfcf4;
+	padding: 1em;
+}
+
+/* Increase the height of the image upload box */
+#wpUploadDescription {
+	height: 13em;
+}
+
+/* Minimum thumb width */
+.thumbinner {
+	min-width: 100px;
+}
+
+/* Prevent floating boxes from overlapping any category listings,
+   file histories, edit previews, and edit [Show changes] views. */
+#mw-subcategories, #mw-pages, #mw-category-media,
+#filehistory, #wikiPreview, #wikiDiff {
+	clear: both;
+}
+
+/* Selectively hide headers in WikiProject banners */
+.wpb .wpb-header             { display: none; }
+.wpbs-inner .wpb .wpb-header { display: block; }     /* for IE */
+.wpbs-inner .wpb .wpb-header { display: table-row; } /* for real browsers */
+.wpbs-inner .wpb-outside     { display: none; }      /* hide things that should only display outside shells */
+
+/* Styling for Abuse Filter tags */
+.mw-tag-markers {
+	font-style:italic;
+	font-size:90%;
+}
+
+/* Hide stuff meant for accounts with special permissions. Made visible again in
+   [[MediaWiki:Group-sysop.css]], [[MediaWiki:Group-accountcreator.css]],
+   [[MediaWiki:Group-templateeditor.css]], [[MediaWiki:Group-extendedmover.css]] and [[Mediawiki:Group-autoconfirmed.css]]. */
+.sysop-show,
+.accountcreator-show,
+.templateeditor-show,
+.extendedmover-show,
+.autoconfirmed-show,
+.user-show {
+	display: none;
+}
+
+/**
+ * Hide the redlink generated by {{Editnotice}},
+ * this overrides the ".sysop-show { display: none; }" above that applies
+ * to the same link as well. See [[phab:T45013]]
+ *
+ * Hide the images in editnotices to keep them readable in VE view.
+ * Long term, editnotices should become a core feature so that they can be designed responsive.
+ */
+.ve-ui-mwNoticesPopupTool-item .editnotice-redlink,
+.ve-ui-mwNoticesPopupTool-item .mbox-image,
+.ve-ui-mwNoticesPopupTool-item .mbox-imageright {
+	display: none !important;
+}
+
+/* Remove bullets when there are multiple edit page warnings */
+ul.permissions-errors > li {
+	list-style: none none;
+}
+ul.permissions-errors {
+	margin: 0;
+}
+
+/* Pie chart: transparent borders */
+.transborder {
+	border: solid transparent;
+}
+
+/* Generic class for Times-based serif, texhtml class for inline math */
+.times-serif,
+span.texhtml {
+	font-family: "Nimbus Roman No9 L", "Times New Roman", Times, serif;
+	font-size: 118%;
+	line-height: 1;
+}
+span.texhtml {
+	white-space: nowrap;
+}
+span.texhtml span.texhtml {
+	font-size: 100%;
+}
+span.mwe-math-mathml-inline {
+	font-size: 118%;
+}
+
+/* Force tabular and lining display for digits and texhtml */
+.digits,
+.texhtml {
+	-moz-font-feature-settings: "lnum", "tnum", "kern" 0;
+	-webkit-font-feature-settings: "lnum", "tnum", "kern" 0;
+	font-feature-settings: "lnum", "tnum", "kern" 0;
+	font-variant-numeric: lining-nums tabular-nums;
+	font-kerning: none;
+}
+
+/* Make <math display="block"> be left aligned with one space indent for compatibility with style conventions */
+.mwe-math-fallback-image-display,
+.mwe-math-mathml-display {
+	margin-left: 1.6em !important;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+.mwe-math-mathml-display math {
+	display: inline;
+}
+
+/* Fix styling of transcluded prefindex tables */
+table#mw-prefixindex-list-table,
+table#mw-prefixindex-nav-table {
+	width: 98%;
+}
+
+/* For portals, added 2011-12-07 -bv
+   On wide screens, show these as two columns
+   On narrow and mobile screens, let them collapse into a single column */
+.portal-column-left {
+	float: left;
+	width: 50%;
+}
+.portal-column-right {
+	float: right;
+	width: 49%;
+}
+.portal-column-left-wide {
+	float: left;
+	width: 60%;
+}
+.portal-column-right-narrow {
+	float: right;
+	width: 39%;
+}
+.portal-column-left-extra-wide {
+	float: left;
+	width: 70%;
+}
+.portal-column-right-extra-narrow {
+	float: right;
+	width: 29%;
+}
+@media only screen and (max-width: 800px) {
+	/* Decouple the columns on narrow screens */
+	.portal-column-left,
+	.portal-column-right,
+	.portal-column-left-wide,
+	.portal-column-right-narrow,
+	.portal-column-left-extra-wide,
+	.portal-column-right-extra-narrow {
+		float: inherit;
+		width: inherit;
+	}
+}
+
+/* Formerly for announcements, now used intermittently */
+#bodyContent .letterhead {
+	background-image:url('//upload.wikimedia.org/wikipedia/commons/e/e0/Tan-page-corner.png');
+	background-repeat:no-repeat;
+	padding: 2em;
+	background-color: #faf9f2;
+}
+
+/* Tree style lists */
+.treeview ul {
+	padding: 0;
+	margin: 0;
+}
+.treeview li {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+.treeview li li {
+	background: url("//upload.wikimedia.org/wikipedia/commons/f/f2/Treeview-grey-line.png") no-repeat 0 -2981px;
+	/* @noflip */
+	padding-left: 20px;
+	text-indent: 0.3em;
+}
+.treeview li li.lastline {
+	background-position: 0 -5971px
+}
+.treeview li.emptyline > ul {
+	/* @noflip */
+	margin-left: -1px;
+}
+.treeview li.emptyline > ul > li:first-child {
+	background-position: 0 9px
+}
+
+/* hidden sortkey for tablesorter */
+td .sortkey,
+th .sortkey {
+	display: none;
+	speak: none;
+}
+
+/* Make it possible to hide checkboxes in <inputbox> */
+.inputbox-hidecheckboxes form .inputbox-element,
+.inputbox-hidecheckboxes .mw-ui-checkbox {
+	display: none !important;
+}
+
+/* Work-around for [[Phabricator:25965]] (Kaltura advertisement) */
+.k-player .k-attribution {
+	visibility: hidden;
+}
+
+/* Move 'play' button of video player to bottom left corner */
+.PopUpMediaTransform a .play-btn-large {
+	margin: 0;
+	top: auto;
+	right: auto;
+	bottom: 0;
+	left: 0;
+}
+
+/* Hide FlaggedRevs notice UI when there are no pending changes */
+.flaggedrevs_draft_synced,
+.flaggedrevs_stable_synced {
+	display: none;
+}
+
+/* Gallery styles background changes are restricted to screen view. In printing we should avoid applying backgrounds. */
+@media screen {
+	/* The backgrounds for galleries. */
+	#content .gallerybox div.thumb {
+		/* Light gray padding */
+		background-color: #f8f9fa;
+	}
+	
+	/* Put a chequered background behind images, only visible if they have transparency.
+   '.filehistory a img' and '#file img:hover' are handled by MediaWiki core (as of 1.19) */
+	.gallerybox .thumb img {
+		background: #fff url(//upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png) repeat;
+	}
+	/* But not on articles, user pages, portals or with opt-out. */
+	.ns-0 .gallerybox .thumb img,
+	.ns-2 .gallerybox .thumb img,
+	.ns-100 .gallerybox .thumb img,
+	.nochecker .gallerybox .thumb img {
+		background: #fff;
+	}
+	
+	/* T178626 */
+	#contentSub:empty,
+	#contentSub2:empty {
+		display: block !important;
+	}
+	
+	#contentSub:empty ~ #jump-to-nav,
+	#contentSub2:empty ~ #jump-to-nav {
+		margin-top: -1.4em !important;
+		margin-bottom: 1.4em !important;
+	}
+
+
+}

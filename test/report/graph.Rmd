@@ -1,0 +1,130 @@
+---
+title: "CS-rginx"
+author: "Bishwajeet Dey"
+date: "December 10, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require("ggplot2")
+require("reshape2")
+require("knitr")
+require("kableExtra")
+require("dplyr")
+require("RColorBrewer")
+require("stringr")
+```
+
+
+```{r, echo=F}
+rginx = read.csv('data/cleandf-rginx.csv', sep=';')
+nginx = read.csv('data/cleandf-nginx.csv', sep=';')
+httpd = read.csv('data/cleandf-httpd.csv', sep=';')
+
+df = rbind(rginx, nginx, httpd)
+
+mean_df = df %>% 
+  filter(rps > 10 * 1000) %>%
+  group_by(server, type, num_conns, concurrency) %>% 
+  summarize(mean_rps = mean(rps))
+
+# 1000 10
+plot_1000_10 <- ggplot(data=mean_df %>% filter(num_conns == 1000 & concurrency == 10), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=1000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=10", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_1000_10, filename="images/plot_1000_10.png")
+
+## 1000 100
+plot_1000_100 <- ggplot(data=mean_df %>% filter(num_conns == 1000 & concurrency == 100), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=1000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=100", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_1000_100, filename="images/plot_1000_100.png")
+
+## Medium load - 10000 100
+plot_10000_100 <- ggplot(data=mean_df %>% filter(num_conns == 10000 & concurrency == 100), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=10000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=100", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_10000_100, filename="images/plot_1000_100.png")
+
+## Medium load - 10000 1000
+plot_10000_1000 <- ggplot(data=mean_df %>% filter(num_conns == 10000 & concurrency == 1000), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=10000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=1000", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_10000_1000, filename="images/plot_10000_1000.png")
+
+# High Load - 100000 1000
+plot_100000_1000 <- ggplot(data=mean_df %>% filter(num_conns == 100000 & concurrency == 1000), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=100000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=1000", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_100000_1000, filename="images/plot_100000_1000.png")
+
+# High Load - 100000 5000
+plot_100000_5000 <- ggplot(data=mean_df %>% filter(num_conns == 100000 & concurrency == 5000), 
+            aes(x = factor(type),  y = mean_rps, fill = factor(server))) + 
+            geom_bar(stat="identity", position="dodge") + 
+            scale_color_manual(values = c(brewer.pal(3,"Dark2"))) +
+            theme_bw() + 
+            ylab("Expected Requests Per Second") + 
+            xlab("Filetype") + 
+            labs(fill="Server") + 
+            annotate("text", x = 6, y = 35000, label="N=100000", size=6) + 
+            annotate("text", x = 6, y = 33000, label="C=5000", size=6) + 
+            theme(text = element_text(size=14))
+ggsave(plot_100000_5000, filename="images/plot_100000_5000.png")
+
+
+
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
